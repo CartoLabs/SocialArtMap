@@ -1,5 +1,5 @@
 /*jslint node:true*/
-var port = (process.env.VCAP_APP_PORT || 3000);
+var port = 3000;
 var express = require("express");
 var sentiment = require('sentiment');
 var twitter = require('ntwitter');
@@ -19,10 +19,10 @@ app.configure(function() {
 // Sample keys for demo and article - you must get your own keys if you clone this application!
 // Create your own app at: https://dev.twitter.com/apps
 var tweeter = new twitter({
-    consumer_key: 'XDMBT427fgVzosqZlu07A',
-    consumer_secret: 'eWXL4TRv5B2UEHJ8cClCWt4Z2rF7yQIaVAbmj6A',
-    access_token_key: '14526702-uRxyEJuAcegZdlPahmMjY5gHIFleFiRL2ITpd0NR0',
-    access_token_secret: 'PrXTHWP2Mcpr7t1d7JCIaFlIR2yDcymeNFAhfqS9Y'
+    consumer_key: 've4JBapy3LV9Kzh4TepQ',
+    consumer_secret: 'tlFbEwxiGRpshA63zUY4bEm4MBrlGR29tjcTFU7aqk',
+    access_token_key: '85571635-lzetGhgD1yZTAvHzKXKUqfasw7vvy5lU7iTY6ohHX',
+    access_token_secret: 'iCFXX2ST9V2zmwcedKlOUjLVZvGEbZzvZtAQGixEUHuRo'
 });
 
 app.get('/twitterCheck', function (req, res) {
