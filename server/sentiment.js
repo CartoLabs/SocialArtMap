@@ -7,7 +7,7 @@ function getSentiment(keywords, text, callback){
 			return callback(err)
 		}else{
 			keywords.split(",").forEach(function(d){
-				if (text.indexOf(d) >=0){
+				if (text.toLowerCase().indexOf(d) >=0){
 					sentimentResult.keyword = d, sentimentResult.score = result.score;
 					return callback(err,sentimentResult);
 				}
