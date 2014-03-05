@@ -1,6 +1,7 @@
 var MongoClient = require('mongodb').MongoClient,
-	Server = require('mongodb').Server
-	async = require('async');
+	Server = require('mongodb').Server,
+	async = require('async'),
+	moment = require('moment');
 
 var mongoClient = new MongoClient(new Server('localhost', 27017,
 										{'native_parser' : true}));
@@ -99,6 +100,35 @@ function MongoProcess(){
 			if (err) {return callback(err)};
 			return callback(err,result);
 		})
+	}
+
+	this.getKeywordList = function(callback){
+		smdSummary.distinct("keyword",function(err,result){
+			if (err) {return callback(err)};
+			return callback(err,result);
+		})
+	};
+
+	this.getSummaryByKeyword = function(keyword,callback){
+		smdSummary.findOne({"keyword":keyword}, function(err,result){
+			if (err) {return callback(err)};
+			return callback(err,result);
+		})
+	}
+
+	this.getTwitsByDateKeyword = function (params, callback){
+		var query = {};
+		var startDate = moment(params.startDate).unix(),
+			endDate = moment(params.endDate).unix();
+		query = params.message=='all' ? {"created_at_unix": {"$gte": startDate, "$lte" : endDate}} :
+											{"keyword": params.message, "created_at_unix": {"$gte": startDate, "$lte" : endDate}};
+console.log(query);
+		twitterMessage.find(query,{"keyword":1, "text":1, "sentimentScore":1, "created_at":1}).toArray(function(err,result){
+			console.log("query finished " + result.length)
+			if (err) {return callback(err)};
+			return callback(err,result);
+		})
+
 	}
 }
 module.exports = MongoProcess;
