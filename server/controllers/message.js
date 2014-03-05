@@ -27,21 +27,21 @@ console.log(req.params);
     else{
       res.send({"results":"wrong parameters"});
     }
-  },
-
-  //TODO
-  create: function(req, res) {
-    res.send("TODO");
-  },
-
-  update: function(req, res) {
-    res.send("TODO");
-  },
-
-
-  destroy: function(req, res) {
-    res.send("TODO");
   }
+
+  // //TODO
+  // create: function(req, res) {
+  //   res.send("TODO");
+  // },
+
+  // update: function(req, res) {
+  //   res.send("TODO");
+  // },
+
+
+  // destroy: function(req, res) {
+  //   res.send("TODO");
+  // }
 
 
 };

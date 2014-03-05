@@ -20,19 +20,19 @@ module.exports = {
     }
   },
 
-  //TODO
-  create: function(req, res) {
-    res.send("TODO");
-  },
+  // //TODO
+  // create: function(req, res) {
+  //   res.send("TODO");
+  // },
 
-  update: function(req, res) {
-    res.send("TODO");
-  },
+  // update: function(req, res) {
+  //   res.send("TODO");
+  // },
 
 
-  destroy: function(req, res) {
-    res.send("TODO");
-  },
+  // destroy: function(req, res) {
+  //   res.send("TODO");
+  // },
 
   getKeywordList: function(req,res){
     console.log("called");

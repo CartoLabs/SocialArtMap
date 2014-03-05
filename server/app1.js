@@ -17,32 +17,32 @@ var app = express();
 mongoProcess.connectMongo(function(err, result){
 	if (err) {throw err};
 //check twitter connection
-	// twit.verifyTwitConnection(function(err, data){
-	// 	if (err) {throw err};
-	// 		mongoProcess.createSummaryCollection(monitoringPhrase, function(err,resultSummary){
-	// 			 twit.getTwitStream(monitoringPhrase,function(data){
-	// 			 	sentiment.getSentiment(monitoringPhrase,data.text,function(err,resultSentiment){
-	// 		             	data.sentimentScore = resultSentiment.score;
-	// 		             	data.keyword = resultSentiment.keyword;
-	// 		             	data.created_at = new Date(data.created_at);
-	// 		             	data.created_at_unix = moment(data.created_at).unix();
-	// 		             	//save raw twit
-	// 		             	mongoProcess.saveRawMessage(data, function(err,resultSavedTwit){
-	// 		             		if (err){throw err};
-	// 		             		console.log("saved");
-	// 		             	});
-	// 		             	//update summary
-	// 		             	mongoProcess.findSummaryByKeyword(data.keyword, function(err,resultSummary){
-	// 			             		if (err){throw err};
-	// 			             		mongoProcess.updateSummaryByKeyword(data,resultSummary,function(err,result){
-	// 			             				//console.dir(result);
-	// 			             				if (err){throw err};
-	// 			             		});
-	// 		             	});
-	// 		        });
-	// 			 });
-	// 		});
-	// });
+	twit.verifyTwitConnection(function(err, data){
+		if (err) {throw err};
+			mongoProcess.createSummaryCollection(monitoringPhrase, function(err,resultSummary){
+				 twit.getTwitStream(monitoringPhrase,function(data){
+				 	sentiment.getSentiment(monitoringPhrase,data.text,function(err,resultSentiment){
+			             	data.sentimentScore = resultSentiment.score;
+			             	data.keyword = resultSentiment.keyword;
+			             	data.created_at = new Date(data.created_at);
+			             	data.created_at_unix = moment(data.created_at).unix();
+			             	//save raw twit
+			             	mongoProcess.saveRawMessage(data, function(err,resultSavedTwit){
+			             		if (err){throw err};
+			             		console.log("saved");
+			             	});
+			             	//update summary
+			             	mongoProcess.findSummaryByKeyword(data.keyword, function(err,resultSummary){
+				             		if (err){throw err};
+				             		mongoProcess.updateSummaryByKeyword(data,resultSummary,function(err,result){
+				             				//console.dir(result);
+				             				if (err){throw err};
+				             		});
+			             	});
+			        });
+				 });
+			});
+	});
 
 });
 
