@@ -1,44 +1,19 @@
 var MongoProcess = require('../mongo');
 var mongoProcess = new MongoProcess();
 
-module.exports = {
-  index: function(req, res) {
-    res.send("index called");
-  },
-
-  show: function(req, res) {
-    console.log(req);
-    if (req.params.summary == "getKeywordList"){
-      mongoProcess.getKeywordList(function(err,result){
+function summary(){
+  this.getKeywordList = function(req,res){
+    mongoProcess.getKeywordList(function(err,result){
         if (err) {throw err};
         res.send({"results": result});
-      })
-    }else{
-      mongoProcess.getSummaryByKeyword(req.params.summary, function(err,result){
-        res.send({"result": result});
-      })
-    }
-  },
+    })
+  };
 
-  // //TODO
-  // create: function(req, res) {
-  //   res.send("TODO");
-  // },
+  this.getSummaryByKeyword = function(req,res){
+    mongoProcess.getSummaryByKeyword(req.params.keyword, function(err,result){
+      res.send({"result": result});
+   })
+  };
+}
 
-  // update: function(req, res) {
-  //   res.send("TODO");
-  // },
-
-
-  // destroy: function(req, res) {
-  //   res.send("TODO");
-  // },
-
-  getKeywordList: function(req,res){
-    console.log("called");
-    console.dir(req);
-    res.send("done");
-
-  }
-
-};
+module.exports = summary;

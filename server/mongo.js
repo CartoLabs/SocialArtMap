@@ -120,9 +120,9 @@ function MongoProcess(){
 		var query = {};
 		var startDate = moment(params.startDate).unix(),
 			endDate = moment(params.endDate).unix();
-		query = params.message=='all' ? {"created_at_unix": {"$gte": startDate, "$lte" : endDate}} :
-											{"keyword": params.message, "created_at_unix": {"$gte": startDate, "$lte" : endDate}};
-console.log(query);
+		query = params.keyword=='all' ? {"created_at_unix": {"$gte": startDate, "$lte" : endDate}} :
+											{"keyword": params.keyword, "created_at_unix": {"$gte": startDate, "$lte" : endDate}};
+
 		twitterMessage.find(query,{"keyword":1, "text":1, "sentimentScore":1, "created_at":1}).toArray(function(err,result){
 			console.log("query finished " + result.length)
 			if (err) {return callback(err)};
