@@ -1,0 +1,34 @@
+.infoPane {
+	bottom: 15px;
+	left: 15px;
+	position: absolute;
+	z-index: 100;
+	background-color: white;
+	opacity: .8;
+	padding: 3px;
+}
+
+.lovehateText{
+	position: relative;
+	float: left;
+}
+
+#loverText {
+	color: #0000FF;
+	font-size: 20px;
+}
+#haterText {
+	color: #FF0000;
+	font-size: 20px;
+}
+
+
+.chartBox {
+	position: relative;
+	float: right;
+}
+
+#myfirstchart {
+	height: 100px;
+	width: 100px;
+}
